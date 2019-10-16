@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    background-image: url(../images/Alaska.jpg);
+    background-attachment: fixed;
+}
+#navbar ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+}
+
+
+li{
+    margin-right: 20px;
+}
+
+#testdiv{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+}
+
+.homecontent{
+    padding-top: 30px;
+}
+
+h1 {
+    border: 2px rgb(255, 255, 255) groove;
+    border-radius: 10px;
+    width: 30%;
+    align-self: center;
+    background-color: rgba(60, 135, 221, 0.966);
+    text-align: center;
+    color: white;
+    text-shadow: black 1px 1px 1px;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+#article {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 25px;
+    border: 3px solid;
+    border-radius: 10px;
+    padding: 25px;
+    width: 60%;
+    text-shadow: black 1px 1px 1px;
+}
+
+#article a {
+    text-shadow: none;
+    color: white;
+}
+
+#articlecontent {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    text-shadow: black 1px 1px 1px;
+    border-radius: 10px;
+}
+
+small {
+    text-align: end;
+}
+
+#comments {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+#commentscontent {
+    border-top: white solid 1px;
+    text-shadow: black 1px 1px 1px;
+    padding-bottom: 30px;
+}
+
+#comments #commentscontent a {
+    color: white;
+    float: right;
+}
+
+#postcomments{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+    border: white 1px solid;
+    width: 100%;
+}
+
+#postcomments form{
+    flex-direction: column;
+    display: flex;
+    width: 40%;
+    text-align: center;
+}
+#postcomments #authorcomment{
+    width: 20%;
+    align-self: center;
+}
+
+#postcomments input, textarea{
+    margin: 15px;
+    text-align: center;
+}
+#postcomments button{
+    align-self: center;
+    width: 20%;
+    margin: 10px;
+}
