@@ -98,4 +98,34 @@ class Comment extends Controller
          
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }
+    public function report()
+    {
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+            die("Ho ! Fallait préciser le paramètre id en GET !");
+        }
+
+        $id = $_GET['id'];
+
+        // 2. Vérification de l'existence du commentaire
+         
+        $commentaire = $this->model->find($id);
+        if (!$commentaire) {
+            die("Aucun commentaire n'a l'identifiant $id !");
+        }
+
+        $author = $commentaire["author"];
+        $content = $commentaire["content"];
+        $commentid = $commentaire["id"];
+        // 3. Suppression du commentaire
+        // On récupère l'identifiant de l'article avant de supprimer le commentaire
+
+        $article_id = $commentaire['article_id'];
+
+        $this->model->report($author, $content, $commentid);
+        
+        //5. Redirection vers l'article en question
+         
+
+        \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
+    }
 }

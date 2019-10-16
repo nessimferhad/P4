@@ -24,4 +24,9 @@ class Comment extends Model
         $query = $this->pdo->prepare('INSERT INTO comments SET author = :author, content = :content, article_id = :article_id, created_at = NOW()');
         $query->execute(compact('author', 'content', 'article_id'));
     }
+    public function report(string $author, string $content, int $comment_id): void
+    { 
+        $query = $this->pdo->prepare('INSERT INTO comment_reported SET author = :author, content = :content, comment_id = :comment_id');
+        $query->execute(compact('author', 'content', 'comment_id'));
+    }
 }
