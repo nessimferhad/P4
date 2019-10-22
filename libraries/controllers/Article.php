@@ -99,20 +99,26 @@ class Article extends Controller
         /*
      4. Redirection vers la page d'accueil
 */
-        \Http::redirect("templates\articles\admin.html.php");
+        \Http::redirect("");
     }
     public function indexAdmin()
     {
-        //1. Récupération des articles
+        //1. Récupération des articles et des commentaires pour l'admin
+
+        $commentModel = new \Models\Comment();
+
+        $commentaires = $commentModel->findReported();
+
 
         $articles = $this->model->findAll("created_at DESC");
+        
 
         /*
      2. Affichage
 */
         $pageTitle = "Accueil Admin";
 
-        \Renderer::render('articles/admin', compact('pageTitle', 'articles','listarticles'));
+        \Renderer::render('articles/admin', compact('pageTitle', 'articles','commentaires'));
 
     }
 }

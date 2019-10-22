@@ -17,16 +17,16 @@ class Comment extends Model
         return $commentaires;
     }
 
-
+    
     //insert un commentaire 
-    public function insert(string $author, string $content, int $article_id): void
+    public function insert(string $author, string $content, int $article_id, int $report): void
     {
-        $query = $this->pdo->prepare('INSERT INTO comments SET author = :author, content = :content, article_id = :article_id, created_at = NOW()');
-        $query->execute(compact('author', 'content', 'article_id'));
+        $query = $this->pdo->prepare('INSERT INTO comments SET author = :author, content = :content, article_id = :article_id, created_at = NOW(), report = :report');
+        $query->execute(compact('author', 'content', 'article_id', 'report'));
     }
-    public function report(string $author, string $content, int $comment_id): void
+    public function report(int $id): void
     { 
-        $query = $this->pdo->prepare('INSERT INTO comment_reported SET author = :author, content = :content, comment_id = :comment_id');
-        $query->execute(compact('author', 'content', 'comment_id'));
+        $query = $this->pdo->prepare('UPDATE `comments` SET `report`= report +1 WHERE `id` = :id');
+        $query->execute(compact('id'));
     }
 }

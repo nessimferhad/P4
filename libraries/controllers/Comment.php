@@ -45,6 +45,9 @@ class Comment extends Controller
             $article_id = $_POST['article_id'];
         }
 
+        $report = 0;
+
+
         // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
         // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
         if (!$author || !$article_id || !$content) {
@@ -61,7 +64,7 @@ class Comment extends Controller
         }
 
         // 3. Insertion du commentaire
-        $article = $this->model->insert($author, $content, $article_id);
+        $article = $this->model->insert($author, $content, $article_id, $report);
 
         // 4. Redirection vers l'article en question :
 
@@ -113,15 +116,14 @@ class Comment extends Controller
             die("Aucun commentaire n'a l'identifiant $id !");
         }
 
-        $author = $commentaire["author"];
-        $content = $commentaire["content"];
+
         $commentid = $commentaire["id"];
         // 3. Suppression du commentaire
         // On récupère l'identifiant de l'article avant de supprimer le commentaire
 
         $article_id = $commentaire['article_id'];
 
-        $this->model->report($author, $content, $commentid);
+        $this->model->report($commentid);
         
         //5. Redirection vers l'article en question
          

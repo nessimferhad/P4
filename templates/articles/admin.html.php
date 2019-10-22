@@ -13,15 +13,29 @@ $hash = '$2y$10$NwKImCMVZdop5s2hH8Rd3uSaWC5Fos2BVEbqvYpPc9vUoBeBsUt0q';
 
 if (isset($_POST['adminaccess'])) {
     $password = $_POST['adminaccess'];
-    if (password_verify($password, $hash)) { ?>   
-
+    if (password_verify($password, $hash)) { ?>  
+<h2 id="h2admin">Gestion des articles</h2>
 <?php foreach ($articles as $article) : ?>
-  <div class='article <?= $article["id"] ?>' id="article">
+  <div class='article <?= $article["id"] ?>' id="adminarticle">
     <h2><?= $article['title'] ?></h2>
     <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite</a>
-    <a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer</a>
+    <a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer l'article</a>
   </div>
 <?php endforeach ?>
+<h2 id="h2admin">Gestion des commentaires</h2>
+<?php foreach ($commentaires as $commentaire) : ?>
+  <div class='article <?= $article["id"] ?>' id="adminarticle">
+    <h2><?= $commentaire['author'] ?></h2>
+    <p><?= $commentaire['content']?></p>
+    <p>nombre de signalements : <?= $commentaire["report"]?></p>
+    <a href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer ce commentaire ?!`)">Supprimer le commentaire</a>
+  </div>
+<?php endforeach ?>
+
+
+        <?php 
+        //echo $commentaires;
+        ?>
 
             <form action="" method="post">
                 <textarea></textarea>

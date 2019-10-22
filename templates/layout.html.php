@@ -29,7 +29,7 @@
     <form class="form-inline my-2 my-lg-0" method="post" action="index.php?controller=article&task=indexAdmin">
         <label>
            Administration 
-      <input class="form-control mr-sm-2" type="password" placeholder="Mot de passe" name="adminaccess">
+      <input class="form-control mr-sm-2" type="password" name="adminaccess">
       </label>
       <button class="btn btn-secondary my-2 my-sm-0" type="submit"> Envoyer</button>
     </form>

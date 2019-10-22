@@ -121,3 +121,22 @@ small {
     width: 20%;
     margin: 10px;
 }
+#reported{
+    float: right;
+    font-style: italic;
+    font-weight: 100;
+    margin-right: 10px;
+}
+#adminarticle, #h2admin{
+    text-align: center;
+    border: 1px white solid;
+    color: white;
+    width: 40%;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin-top: 50px !important;
+}
+#adminarticle a {
+    color: white;
+}

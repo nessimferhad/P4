@@ -30,6 +30,18 @@ abstract class Model
         return $articles;
     }
 
+    public function findReported(): array
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE `report` > 5";
+        //retourne la liste des articles dans un array
+        $resultats = $this->pdo->query($sql);
+        // On fouille le résultat pour en extraire les données réelles
+        $reportedcomments = $resultats->fetchAll();
+
+        return $reportedcomments;
+    }
+    
+
         // renvoie un contenu en particulier selon la table donnée
     public function find(int $id)
     {
