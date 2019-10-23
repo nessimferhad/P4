@@ -20,9 +20,9 @@
         <?php foreach ($articles as $article) : ?>
           <div class='article <?= $article["id"] ?>' id="adminarticle">
             <h2><?= $article['title'] ?></h2>
-            <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite</a>
-            <a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer l'article</a>
-            <a href="index.php?controller=article&task=displayArticleToUpdate&id=<?= $article['id'] ?>">test</a>
+            <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite /</a>
+            <a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer l'article /</a>
+            <a href="index.php?controller=article&task=displayArticleToUpdate&id=<?= $article['id'] ?>">Modifier l'artice</a>
           </div>
         <?php endforeach ?>
         <h2 class="h2admin">Gestion des commentaires</h2>
