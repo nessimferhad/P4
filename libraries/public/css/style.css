@@ -155,3 +155,23 @@ small {
 .formarticle label{
     text-align: center;
 }
+#img{
+    width: 30%;
+}
+#aboutme{
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    justify-content: space-evenly;
+}
+#me{
+    width: 100%;
+}
+#mydescription{
+    width: 55%;
+    text-align: justify;
+}
+figure{
+    margin: auto !important;
+}

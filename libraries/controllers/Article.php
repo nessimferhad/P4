@@ -147,4 +147,62 @@ class Article extends Controller
         \Http::redirect("index.php");
 
     }
+
+    public function displayArticleToUpdate(){
+
+        $article_id = null;
+
+        if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
+            $article_id = $_GET['id'];
+        }
+
+        $article = $this->model->find($article_id);
+
+        \Renderer::render('articles/updatepost', compact('article'));
+
+    }
+
+    public function confirmUpdate(){
+
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+            die("Ho ! Fallait préciser le paramètre id en GET !");
+        }
+
+        $id = $_GET['id'];
+
+        // 2. Vérification de l'existence du commentaire
+         
+        $article = $this->model->find($id);
+        if (!$article) {
+            die("Aucun article n'a l'identifiant $id !");
+        }
+
+        $articleid = $article["id"];
+
+        $title = null;
+        if (!empty($_POST['title'])) {
+            $title = $_POST['title'];
+        }
+
+        $introduction = null;
+        if (!empty($_POST['introduction'])) {
+            $introduction = $_POST['introduction'];
+        }
+
+        $content = null;
+        if (!empty($_POST['articlecontent'])) {
+            $content = $_POST['articlecontent'];
+        }
+
+        if (!$title || !$introduction || !$content) {
+            die("Certains champ de votre article ont été mal rempli !");
+        }
+
+        $this->model->updateArticle($title, $introduction, $content, $articleid);
+
+        \Http::redirect("index.php");
+
+    
+    }
+    
 }

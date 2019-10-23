@@ -1,3 +1,21 @@
+<h1>A Propos de moi</h1>
+
+
+<div id="aboutme">
+  <div id="img">
+    <figure><img src="libraries\public\images\writer.jpg" alt="Jean Forteroche" id="me"></figure>
+  </div>
+<div id="mydescription">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eleifend suscipit velit vitae dictum. 
+    In ac odio eleifend, vestibulum mi ac, aliquam dui. Sed porta eros eget hendrerit condimentum. Cras massa libero, finibus ut metus a,
+    condimentum bibendum lacus. Nullam varius odio iaculis magna tempor, ac venenatis mi auctor. Sed condimentum, purus id condimentum blandit,
+    tortor mi molestie orci, nec viverra ipsum ex in nisl. Nullam vel tristique arcu, et dictum ante. Duis lacinia, mauris nec maximus ullamcorper,
+    ipsum erat pharetra sem, id dapibus eros felis eu arcu. Curabitur nibh est, finibus a ipsum nec, aliquet fermentum nunc.</p>
+    </div>
+</div>
+
+
+
 <h1>Mes chapitres les plus récents</h1>
 
 <?php foreach ($articles as $article) : ?>
