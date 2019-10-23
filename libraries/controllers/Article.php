@@ -99,7 +99,7 @@ class Article extends Controller
         /*
      4. Redirection vers la page d'accueil
 */
-        \Http::redirect("");
+        \Http::redirect("index.php");
     }
     public function indexAdmin()
     {
@@ -119,6 +119,32 @@ class Article extends Controller
         $pageTitle = "Accueil Admin";
 
         \Renderer::render('articles/admin', compact('pageTitle', 'articles','commentaires'));
+    }
+
+    public function insertNewArticle(){
+
+        $title = null;
+        if (!empty($_POST['title'])) {
+            $title = $_POST['title'];
+        }
+
+        $introduction = null;
+        if (!empty($_POST['introduction'])) {
+            $introduction = $_POST['introduction'];
+        }
+
+        $content = null;
+        if (!empty($_POST['articlecontent'])) {
+            $content = $_POST['articlecontent'];
+        }
+
+        if (!$title || !$introduction || !$content) {
+            die("Certains champ de votre article ont été mal rempli !");
+        }
+
+        $this->model->insertArticle($title, $introduction, $content);
+
+        \Http::redirect("index.php");
 
     }
 }

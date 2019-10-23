@@ -127,7 +127,7 @@ small {
     font-weight: 100;
     margin-right: 10px;
 }
-#adminarticle, #h2admin{
+#adminarticle, .h2admin{
     text-align: center;
     border: 1px white solid;
     color: white;
@@ -137,6 +137,21 @@ small {
     padding: 10px;
     margin-top: 50px !important;
 }
+.h2admin{
+    width: 100%;
+}
 #adminarticle a {
     color: white;
+}
+.newarticle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formarticle{
+    display: flex;
+    flex-direction: column;
+}
+.formarticle label{
+    text-align: center;
 }
