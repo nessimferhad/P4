@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -26,13 +26,12 @@
         <a class="nav-link" href="#">A propos</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" method="post" action="index.php?controller=article&task=indexAdmin">
-        <label>
-           Administration 
-      <input class="form-control mr-sm-2" type="password" name="adminaccess">
-      </label>
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit"> Envoyer</button>
-    </form>
+    <?php if (isset($_SESSION['id'])) : ?>
+            <a href="index.php?controller=user&task=disconnect" style="color:#fff;">déconnexion</a>
+            <a href="index.php?controller=article&task=indexAdmin" style="color:#fff;"> Retour a l'administration</a>
+        <?php else : ?>
+            <a href="index.php?controller=user&task=getUser" class="admin">Administration</a>
+        <?php endif; ?>
   </div>
 </nav>
 

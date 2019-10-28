@@ -175,3 +175,6 @@ small {
 figure{
     margin: auto !important;
 }
+a.admin {
+    color: white !important;
+}

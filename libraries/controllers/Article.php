@@ -11,7 +11,7 @@ require_once('libraries/autoload.php');
 
 class Article extends Controller
 {
-   protected $modelName = \Models\Article::class;
+    protected $modelName = \Models\Article::class;
 
     public function index()
     {
@@ -26,8 +26,7 @@ class Article extends Controller
 */
         $pageTitle = "Accueil";
 
-        \Renderer::render('articles/index', compact('pageTitle', 'articles','listarticles'));
-
+        \Renderer::render('articles/index', compact('pageTitle', 'articles', 'listarticles'));
     }
 
     public function show()
@@ -57,7 +56,7 @@ class Article extends Controller
 */
 
         $article = $this->model->find($article_id);
-        
+
 
         /*
     3. Récupération des commentaires de l'article en question
@@ -74,7 +73,7 @@ class Article extends Controller
 
     public function delete()
     {
-    
+
         /*
      1. On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
 */
@@ -99,29 +98,30 @@ class Article extends Controller
         /*
      4. Redirection vers la page d'accueil
 */
-        \Http::redirect("index.php");
+        \Http::redirect("index.php?controller=article&task=indexAdmin");
     }
     public function indexAdmin()
     {
         //1. Récupération des articles et des commentaires pour l'admin
 
-        $commentModel = new \Models\Comment();
-
-        $commentaires = $commentModel->findReported();
-
-
-        $articles = $this->model->findAll("created_at DESC");
-        
+        if($_SESSION['id']) {
+            $commentModel = new \Models\Comment();
+            $commentaires = $commentModel->findReported();
+            $articles = $this->model->findAll("created_at DESC");
+        } else {
+            \Http::redirect("index.php");
+        }
 
         /*
      2. Affichage
 */
         $pageTitle = "Accueil Admin";
 
-        \Renderer::render('articles/admin', compact('pageTitle', 'articles','commentaires'));
+        \Renderer::render('articles/admin', compact('pageTitle', 'articles', 'commentaires'));
     }
 
-    public function insertNewArticle(){
+    public function insertNewArticle()
+    {
 
         $title = null;
         if (!empty($_POST['title'])) {
@@ -144,11 +144,11 @@ class Article extends Controller
 
         $this->model->insertArticle($title, $introduction, $content);
 
-        \Http::redirect("index.php");
-
+        \Http::redirect("index.php?controller=article&task=indexAdmin");
     }
 
-    public function displayArticleToUpdate(){
+    public function displayArticleToUpdate()
+    {
 
         $article_id = null;
 
@@ -159,10 +159,10 @@ class Article extends Controller
         $article = $this->model->find($article_id);
 
         \Renderer::render('articles/updatepost', compact('article'));
-
     }
 
-    public function confirmUpdate(){
+    public function confirmUpdate()
+    {
 
         if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
             die("Ho ! Fallait préciser le paramètre id en GET !");
@@ -171,7 +171,7 @@ class Article extends Controller
         $id = $_GET['id'];
 
         // 2. Vérification de l'existence du commentaire
-         
+
         $article = $this->model->find($id);
         if (!$article) {
             die("Aucun article n'a l'identifiant $id !");
@@ -200,9 +200,6 @@ class Article extends Controller
 
         $this->model->updateArticle($title, $introduction, $content, $articleid);
 
-        \Http::redirect("index.php");
-
-    
+        \Http::redirect("index.php?controller=article&task=indexAdmin");
     }
-    
 }
