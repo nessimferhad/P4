@@ -164,6 +164,9 @@ small {
     color: white;
     background-color: rgba(0, 0, 0, 0.2);
     justify-content: space-evenly;
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 10px;
 }
 #me{
     width: 100%;
@@ -184,4 +187,36 @@ a.admin {
     list-style-type: none;
     margin: 0;
     justify-content: center;
+}
+.card{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgba(0,0,0,0.2) !important;
+    color: white !important;
+    background-clip: border-box;
+    border: 3px solid white !important;
+    border-radius: 10px!important;
+}
+
+.card a {
+    color: white;
+}
+
+.card a:hover{
+    color: white!important;
+}
+
+.card img{
+    padding: 10px;
+}
+textarea{
+    width: 100% !important;
+}
+.deletecomment{
+    margin-left: 10px;
 }

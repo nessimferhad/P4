@@ -32,7 +32,7 @@
             //echo $commentaires;
             ?>
         <div class="newarticle">
-          <h2 class="h2admin">Creer un nouvel article</h2>
+          <h2 class="h2admin">Créer un nouvel article</h2>
           <form action="index.php?controller=article&task=insertNewArticle" method="post" class="formarticle">
             <label>
               Titre de l'article : <br />

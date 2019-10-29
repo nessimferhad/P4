@@ -4545,6 +4545,11 @@ input[type="button"].btn-block {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+          display: flex !important;
+          justify-content: space-between !important;
+}
+.navbar-collapse a{
+  color: white !important;
 }
 
 .navbar-toggler {
@@ -4974,7 +4979,7 @@ input[type="button"].btn-block {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 0 solid transparent;
+  border-bottom: 1px solid rgb(255,255,255) !important;
 }
 
 .card-header:first-child {

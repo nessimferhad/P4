@@ -74,20 +74,19 @@ class Article extends Controller
     public function delete()
     {
 
-        if($_SESSION['id']) {
+        if ($_SESSION['id']) {
 
-        /*
+            /*
      1. On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
 */
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ?! Tu n'as pas précisé l'id de l'article !");
+            if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+                die("Ho ?! Tu n'as pas précisé l'id de l'article !");
+            }
+
+            $id = $_GET['id'];
+        } else {
+            \Http::redirect("index.php");
         }
-
-        $id = $_GET['id'];
-
-    } else {
-        \Http::redirect("index.php");
-    }
 
         /*
      2. Vérification que l'article existe bel et bien
@@ -110,7 +109,7 @@ class Article extends Controller
     {
         //1. Récupération des articles et des commentaires pour l'admin
 
-        if($_SESSION['id']) {
+        if ($_SESSION['id']) {
             $commentModel = new \Models\Comment();
             $commentaires = $commentModel->findReported();
             $articles = $this->model->findAll("created_at DESC");
@@ -155,26 +154,35 @@ class Article extends Controller
 
     public function displayArticleToUpdate()
     {
+        if ($_SESSION['id']) {
+            $article_id = null;
 
-        $article_id = null;
-
-        if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
-            $article_id = $_GET['id'];
+            if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
+                $article_id = $_GET['id'];
+            }
+        } else {
+            \Http::redirect("index.php");
         }
 
         $article = $this->model->find($article_id);
 
-        \Renderer::render('articles/updatepost', compact('article'));
+        $pageTitle = "modification de l'article : " . $article['title'];
+
+        \Renderer::render('articles/updatepost', compact('article', 'pageTitle'));
     }
 
     public function confirmUpdate()
     {
+        if ($_SESSION['id']) {
 
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ! Fallait préciser le paramètre id en GET !");
+            if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
+                die("Ho ! Fallait préciser le paramètre id en GET !");
+            }
+
+            $id = $_GET['id'];
+        } else {
+            \Http::redirect("index.php");
         }
-
-        $id = $_GET['id'];
 
         // 2. Vérification de l'existence du commentaire
 
