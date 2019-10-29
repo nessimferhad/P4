@@ -74,6 +74,8 @@ class Article extends Controller
     public function delete()
     {
 
+        if($_SESSION['id']) {
+
         /*
      1. On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
 */
@@ -82,6 +84,10 @@ class Article extends Controller
         }
 
         $id = $_GET['id'];
+
+    } else {
+        \Http::redirect("index.php");
+    }
 
         /*
      2. Vérification que l'article existe bel et bien

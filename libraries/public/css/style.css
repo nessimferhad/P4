@@ -178,3 +178,10 @@ figure{
 a.admin {
     color: white !important;
 }
+.adminactions{
+    display: flex;
+    align-self: center;
+    list-style-type: none;
+    margin: 0;
+    justify-content: center;
+}

@@ -10,9 +10,11 @@
         <?php foreach ($articles as $article) : ?>
           <div class='article <?= $article["id"] ?>' id="adminarticle">
             <h2><?= $article['title'] ?></h2>
-            <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire l'article /</a>
-            <a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer l'article /</a>
-            <a href="index.php?controller=article&task=displayArticleToUpdate&id=<?= $article['id'] ?>">Modifier l'article</a>
+            <ul class="adminactions">
+              <li><a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire l'article</a></li>
+              <li><a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer l'article</a></li>
+              <li><a href="index.php?controller=article&task=displayArticleToUpdate&id=<?= $article['id'] ?>">Modifier l'article</a></li>
+            </ul>
           </div>
         <?php endforeach ?>
         <h2 class="h2admin">Gestion des commentaires</h2>

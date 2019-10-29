@@ -2468,6 +2468,7 @@ textarea.form-control {
 }
 
 .form-inline {
+  align-self: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2610,6 +2611,7 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
+  font-size: 1rem !important;
   background: #2196F3 -webkit-gradient(linear, left top, left bottom, from(#42a6f5), to(#2196F3)) repeat-x;
   background: #2196F3 linear-gradient(180deg, #42a6f5, #2196F3) repeat-x;
   border-color: #2196F3;
@@ -5476,9 +5478,11 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .jumbotron {
   padding: 2rem 1rem;
-  margin-bottom: 2rem;
-  background-color: #eee;
+  margin-bottom: 0!important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
   border-radius: 0.3rem;
+  display: flex ;
+  flex-direction: column ;
 }
 
 @media (min-width: 576px) {
@@ -11563,6 +11567,7 @@ input[type=number],
   transition: -webkit-box-shadow 0.2s;
   transition: box-shadow 0.2s;
   transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+  width: 30%;
 }
 
 textarea:focus,
