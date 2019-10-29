@@ -57,3 +57,4 @@
     </div>
   <?php endfor ?>
 </div>
+<script src="libraries\public\js\Cards.js"></script>

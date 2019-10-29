@@ -220,3 +220,7 @@ textarea{
 .deletecomment{
     margin-left: 10px;
 }
+#articlecontent p{
+    width: 74%;
+    margin: auto;
+}
