@@ -688,6 +688,13 @@ pre code {
 
 }
 
+@media (min-width:1025px) and  (max-width:1560px){
+
+  #postcomments form {
+    width: 60%;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     max-width: 720px;

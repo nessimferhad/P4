@@ -18,11 +18,10 @@
                      <em><?= $commentaire['content'] ?></em>
                  </blockquote>
                  <?php if (isset($_SESSION['id'])) : ?>
+                 <span id="reported">nombre de signalements : <?= $commentaire['report'] ?> <span>
                  <a class="deletecomment" href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?!`)">Supprimer</a>
                  <?php endif?>
                  <a href="index.php?controller=comment&task=report&id=<?= $commentaire['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir signaler ce commentaire ?!`)">Signaler</a>
-                <!-- <a href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?!`)">Supprimer</a>-->
-                <span id="reported">nombre de signalements : <?= $commentaire['report'] ?> <span>
              </div>
          <?php endforeach ?>
      <?php endif ?>
