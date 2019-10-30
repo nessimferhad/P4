@@ -51,12 +51,19 @@ class Article extends Controller
         if (!$article_id) {
             die("Vous devez préciser un paramètre `id` dans l'URL !");
         }
+
+
+
+
         /*
-    2. Récupération d'un article en question
+    2. Récupération d'un article en question et controle si l'article existe ou non
 */
 
         $article = $this->model->find($article_id);
 
+        if (!$article) {
+            die("Cet article n'existe pas !");
+        }
 
         /*
     3. Récupération des commentaires de l'article en question

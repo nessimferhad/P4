@@ -25,7 +25,7 @@ class Cards {
             card_header1.textContent = "Aller voir le site de mon partenaire :";
     
             let card_title1 = document.getElementById("card-title1");
-            card_title1.textContent = "La francaise des circuits!";
+            card_title1.textContent = "La francaise des circuits! Des voyages itinérants partout dans le monde !";
     
             let card_img1 = document.getElementById("card-image1");
             card_img1.setAttribute("src", "libraries/public/images/logopartenaire.png")
