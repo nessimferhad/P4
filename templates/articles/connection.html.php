@@ -1,5 +1,5 @@
 <div class="jumbotron">
-    <h1 class="display-20">Se connecter a l'administration :</h1>
+    <h1 class="display-20">Se connecter a l'administration</h1>
     <form class="form-inline my-2 my-lg-0" method="post">
         <label>
             Entrez le mot de passe : 

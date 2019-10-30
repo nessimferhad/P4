@@ -12,7 +12,7 @@ class Cards {
         card_img0.setAttribute("src", "libraries/public/images/Alaska02.jpg")
 
         let card_text0 = document.getElementById("card-text0");
-        card_text0.textContent = "Vous y trouvevez pleins de paysages fabuleux et n'hésitez pas a me faire part de vos avis via les commentaires !"
+        card_text0.textContent = "Vous y trouverez pleins de paysages fabuleux et n'hésitez pas a me faire part de vos avis via les commentaires !"
 
         let card_link0 = document.getElementById("card-link0");
         card_link0.textContent = "Mon instagram : @JeanForteroche";
@@ -31,7 +31,7 @@ class Cards {
             card_img1.setAttribute("src", "libraries/public/images/logopartenaire.png")
     
             let card_text1 = document.getElementById("card-text1");
-            card_text1.textContent = "Vous y trouvevez pleins circuit dans plein de régions différentes et pour tout les gouts !"
+            card_text1.textContent = "Vous y trouverez pleins circuit dans plein de régions différentes et pour tout les gouts !"
     
             let card_link1 = document.getElementById("card-link1");
             card_link1.textContent = "https://www.lafrancaisedescircuits.fr/";

@@ -20,10 +20,10 @@
       <?php if (isset($_SESSION['id'])) : ?>
         <ul class="adminactions">
           <li>
-            <a href="index.php?controller=article&task=indexAdmin" style="color:#fff;"> Retour à l'administration</a>
+            <a href="index.php?controller=article&task=indexAdmin"> Retour à l'administration</a>
           </li>
-          <li>
-            <a href="index.php?controller=user&task=disconnect" style="color:#fff;">Déconnexion</a>
+          <li id="logout">
+            <a href="index.php?controller=user&task=disconnect">Déconnexion</a>
           </li>
         </ul>
       <?php else : ?>

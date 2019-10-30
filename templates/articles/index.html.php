@@ -49,7 +49,7 @@
       <div class="card-body">
         <h5 class="card-title" id="card-title<?= $i ?>"></h5>
       </div>
-      <img id="card-image<?= $i ?>" style="height: 230px; width: 100%; display: block;" alt="Card image">
+      <img id="card-image<?= $i ?>" style="width: 100%; display: block;" alt="Card image">
       <div class="card-body card-body<?= $i ?>">
         <p class="card-text" id="card-text<?= $i ?>"></p>
         <a id="card-link<?= $i ?>" href="#"></a>
