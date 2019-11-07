@@ -6,7 +6,7 @@ class Cards {
         card_header0.textContent = "Venez visitez mon instragram !";
 
         let card_title0 = document.getElementById("card-title0");
-        card_title0.textContent = "Il est regulièrement mit à jour avec les photos de mes aventures!";
+        card_title0.textContent = "Il est regulièrement mit à jour avec les photos de mes aventures !";
 
         let card_img0 = document.getElementById("card-image0");
         card_img0.setAttribute("src", "libraries/public/images/Alaska02.jpg")
@@ -25,7 +25,7 @@ class Cards {
             card_header1.textContent = "Aller voir le site de mon partenaire :";
     
             let card_title1 = document.getElementById("card-title1");
-            card_title1.textContent = "La francaise des circuits! Des voyages itinérants partout dans le monde !";
+            card_title1.textContent = "La francaise des circuits ! Des voyages itinérants partout dans le monde !";
     
             let card_img1 = document.getElementById("card-image1");
             card_img1.setAttribute("src", "libraries/public/images/logopartenaire.png")
@@ -44,7 +44,7 @@ class Cards {
                 card_header2.textContent = "Venez me retrouver sur facebook :";
         
                 let card_title2 = document.getElementById("card-title2");
-                card_title2.textContent = "J'y poste souvent des résumé de mes aventures au jour le jour!";
+                card_title2.textContent = "J'y poste souvent des résumé de mes aventures au jour le jour !";
         
                 let card_img2 = document.getElementById("card-image2");
                 card_img2.setAttribute("src", "libraries/public/images/meeting.jpg")

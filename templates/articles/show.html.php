@@ -7,7 +7,7 @@
  </div>
  <div id="comments">
      <?php if (count($commentaires) === 0) : ?>
-         <h2>Il n'y a pas encore de commentaires pour cet article ... SOYEZ LE PREMIER ! :D</h2>
+         <h2>Il n'y a pas encore de commentaires pour cet article.</h2>
      <?php else : ?>
          <h2>Il y a déjà <?= count($commentaires) ?> réaction(s) : </h2>
          <?php foreach ($commentaires as $commentaire) : ?>

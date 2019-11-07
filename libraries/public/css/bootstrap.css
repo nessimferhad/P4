@@ -3024,7 +3024,7 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  font-size: 1rem !important;
+  font-size: 0.9rem !important;
   background: #2196F3 -webkit-gradient(linear, left top, left bottom, from(#42a6f5), to(#2196F3)) repeat-x;
   background: #2196F3 linear-gradient(180deg, #42a6f5, #2196F3) repeat-x;
   border-color: #2196F3;

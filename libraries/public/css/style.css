@@ -224,6 +224,9 @@ textarea{
     width: 74%;
     margin: auto;
 }
+#commentscontent span{
+    padding: 5px;
+}
 @media (min-width: 2560px){
     body{
     background-repeat: round;

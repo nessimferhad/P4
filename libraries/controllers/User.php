@@ -1,30 +1,30 @@
 <?php
 
 // CE FICHIER CONTIENT TOUTES LES FONCTIONS "ACTION" LIE AUX USERS
+// Protected ModelName fait appel au model avec lequel on interagit
 
 
 namespace Controllers;
 
 
-require_once('libraries/autoload.php');
+
 
 class User extends Controller
 {
    protected $modelName = \Models\User::class;
 
-   function getUser(){
+   function logIn(){
 
     $user = $this->model->findUser("WHERE `id` = 1");
 
-    //$password = password_verify($_POST['adminaccess'], $user['password']);
 
-    \Renderer::render('articles/connection', compact('user'));
+    \Renderer::render('articles/connection', compact('user')); // compile et envoie la variable user dans la page connection
    }
 
    function disconnect(){
 
       session_destroy();
 
-      \Http::redirect("index.php");
+      \Http::redirect("index.php"); // redirection vers l'index
     }
    }

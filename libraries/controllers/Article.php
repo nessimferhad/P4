@@ -2,12 +2,15 @@
 
 // CE FICHIER CONTIENT TOUTES LES FONCTIONS "ACTION" LIE AUX ARTICLES :
 // INDEX => MONTRE LES ARTICLES
+// INDEXADMIN => AFFICHE LA LISTE DES ARTICLES AINSI QUE LES COMMENTAIRES A MODERER DANS LA PAGE ADMIN
 // SHOW => MONTRE 1 ARTICLE
 // DELETE => SUPPRIME 1 ARTICLE
+// INSERTNEWARTICLE => AJOUTE UN NOUVEL ARTICLE
+// DISPLAYTOUPDATE => AFFICHE L'ARTICLE A METTRE A JOUR
+// CONFIRMUPDATE => MET A JOUR L'ARTICLE
 
+// Protected ModelName fait appel au model avec lequel on interagit
 namespace Controllers;
-
-require_once('libraries/autoload.php');
 
 class Article extends Controller
 {
@@ -20,13 +23,12 @@ class Article extends Controller
         $articles = $this->model->findAll("created_at DESC LIMIT 3");
         $listarticles = $this->model->findAll("created_at DESC");
 
-
         /*
      2. Affichage
 */
-        $pageTitle = "Accueil";
+        $pageTitle = "Accueil"; // variable pour determiner le title de la page
 
-        \Renderer::render('articles/index', compact('pageTitle', 'articles', 'listarticles'));
+        \Renderer::render('articles/index', compact('pageTitle', 'articles', 'listarticles')); //compile et envoie les variables pagetitle articles et lisesarticle dans la page index
     }
 
     public function show()
@@ -34,25 +36,21 @@ class Article extends Controller
 
         //initiation des objets
 
-        $commentModel = new \Models\Comment();
+        $commentModel = new \Models\Comment(); // appel du model Commentaire car on va avoir besoin d'afficher les commentaires liés a l'article en question 
 
         /*
     1. Récupération du param "id" et vérification de celui-ci
 */
-        // On part du principe qu'on ne possède pas de param "id"
+
         $article_id = null;
 
-        // Mais si il y'en a un et que c'est un nombre entier, alors c'est cool
+        // Si il y'en a un et que c'est un nombre entier, alors c'est ok
         if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
             $article_id = $_GET['id'];
+        } else {
+            // On affiche une erreur
+            die("Vous devez préciser l'id de l'article dans l'URL !");
         }
-
-        // On peut désormais décider : erreur ou pas ?!
-        if (!$article_id) {
-            die("Vous devez préciser un paramètre `id` dans l'URL !");
-        }
-
-
 
 
         /*
@@ -60,7 +58,6 @@ class Article extends Controller
 */
 
         $article = $this->model->find($article_id);
-
         if (!$article) {
             die("Cet article n'existe pas !");
         }
@@ -75,24 +72,24 @@ class Article extends Controller
 */
         $pageTitle = $article['title'];
 
-        \Renderer::render("articles/show", compact('pageTitle', 'article', 'commentaires', 'article_id'));
+        \Renderer::render("articles/show", compact('pageTitle', 'article', 'commentaires', 'article_id')); //compile et envoie les variables pagetitle articles commentaire et article_id dans la page show
     }
 
     public function delete()
     {
-
+        // fonctionnalité admin, on check donc si la session admin est présente ou non 
         if ($_SESSION['id']) {
 
             /*
-     1. On vérifie que le GET possède bien un paramètre "id" (delete.php?id=202) et que c'est bien un nombre
+     1. On vérifie que le GET possède bien un paramètre "id" et que c'est bien un nombre
 */
             if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
                 die("Ho ?! Tu n'as pas précisé l'id de l'article !");
             }
 
             $id = $_GET['id'];
-        } else {
-            \Http::redirect("index.php");
+        } else { 
+            \Http::redirect("index.php"); // Sinon redirection vers l'index
         }
 
         /*
@@ -108,12 +105,13 @@ class Article extends Controller
 */
         $this->model->delete($id);
         /*
-     4. Redirection vers la page d'accueil
+     4. Redirection vers la page d'accueil de l'admin
 */
         \Http::redirect("index.php?controller=article&task=indexAdmin");
     }
     public function indexAdmin()
     {
+        // fonctionnalité admin, on check donc si la session admin est présente ou non 
         //1. Récupération des articles et des commentaires pour l'admin
 
         if ($_SESSION['id']) {
@@ -191,7 +189,7 @@ class Article extends Controller
             \Http::redirect("index.php");
         }
 
-        // 2. Vérification de l'existence du commentaire
+        // Vérification de l'existence de l'article 
 
         $article = $this->model->find($id);
         if (!$article) {
@@ -199,6 +197,8 @@ class Article extends Controller
         }
 
         $articleid = $article["id"];
+
+        // Controle du formulaire
 
         $title = null;
         if (!empty($_POST['title'])) {
@@ -219,6 +219,7 @@ class Article extends Controller
             die("Certains champ de votre article ont été mal rempli !");
         }
 
+        // execution de la requete updateArticle depuis le model qui va mettre a jour l'article 
         $this->model->updateArticle($title, $introduction, $content, $articleid);
 
         \Http::redirect("index.php?controller=article&task=indexAdmin");

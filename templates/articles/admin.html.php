@@ -3,7 +3,7 @@
       tinymce.init({
         width : 1000,
         height : 700,
-        selector: 'textarea' // change this value according to your HTML
+        selector: 'textarea' 
       });
     </script>
         <h2 class="h2admin">Gestion des articles</h2>
@@ -29,7 +29,6 @@
 
 
         <?php
-            //echo $commentaires;
             ?>
         <div class="newarticle">
           <h2 class="h2admin">Créer un nouvel article</h2>
@@ -49,10 +48,6 @@
             </label>
           </form>
         </div>
-    <?php /*} else {
-        echo 'MOT DE PASSE ERRONE';
-      }
-    }*/ ?>
     </body>
 
     </html>

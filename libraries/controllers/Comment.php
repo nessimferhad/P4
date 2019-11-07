@@ -1,9 +1,10 @@
 <?php
-
+// L'autoload est required pour appeller les classes des models
+// Protected ModelName fait appel au model avec lequel on interagit
 // CE FICHIER CONTIENT TOUTES LES FONCTIONS "ACTION" LIE AUX COMMENTAIRES :
-// INDEX => MONTRE LES ARTICLES
-// SHOW => MONTRE 1 ARTICLE
+// INSERT => ajoute un commentaire
 // DELETE => SUPPRIME 1 ARTICLE
+// REPORT => signale un commentaire
 
 
 namespace Controllers;
@@ -21,22 +22,20 @@ class Comment extends Controller
         //instencie le model Article depuis le namespace Models
         $articleModel = new \Models\Article();
 
-        /*
-        * 1. On vérifie que les données ont bien été envoyées en POST
-        * D'abord, on récupère les informations à partir du POST
-        * Ensuite, on vérifie qu'elles ne sont pas nulles
-        */
-        // On commence par l'author
+        
+        //On vérifie que les données ont bien été envoyées en POST
+        //Ensuite, on vérifie qu'elles ne sont pas nulles
+        
+
         $author = null;
         if (!empty($_POST['author'])) {
-            $author = $_POST['author'];
+            $author = htmlspecialchars($_POST['author']);              // Protection des données au cas ou l'utilisateur envoie du contenu malveillant
         }
 
-        // Ensuite le contenu
+
         $content = null;
         if (!empty($_POST['content'])) {
-            // On fait quand même gaffe à ce que le gars n'essaye pas des balises cheloues dans son commentaire
-            $content = htmlspecialchars($_POST['content']);
+            $content = htmlspecialchars($_POST['content']);            // Protection des données au cas ou l'utilisateur envoie du contenu malveillant
         }
 
         // Enfin l'id de l'article
@@ -45,11 +44,11 @@ class Comment extends Controller
             $article_id = $_POST['article_id'];
         }
 
-        $report = 0;
+        $report = 0; // variable pour compter le nombre de signalement de commentaires 
 
 
-        // Vérification finale des infos envoyées dans le formulaire (donc dans le POST)
-        // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article
+        // Vérification finale des infos envoyées
+        // Si il n'y a pas d'auteur OU qu'il n'y a pas de contenu OU qu'il n'y a pas d'identifiant d'article on affiche une erreur 
         if (!$author || !$article_id || !$content) {
             die("Votre formulaire a été mal rempli !");
         }
@@ -58,9 +57,9 @@ class Comment extends Controller
 
         $article = $articleModel->find($article_id);
 
-        // Si rien n'est revenu, on fait une erreur
+        // Si l'id verifié n'existe pas on envoie une erreur
         if (!$article) {
-            die("Ho ! L'article $article_id n'existe pas !");
+            die("L'article $article_id n'existe pas !");
         }
 
         // 3. Insertion du commentaire
@@ -74,17 +73,17 @@ class Comment extends Controller
 
     public function delete()
     {
-
+        // fonctionnalité admin, on check donc si la session admin est présente ou non 
         if ($_SESSION['id']) {
 
-            //1. Récupération du paramètre "id" en GET
+            //1. Si la session est bien la : Récupération du paramètre "id" en GET
 
             if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-                die("Ho ! Fallait préciser le paramètre id en GET !");
+                die("Aucun id de commentaire n'a été trouvé !");
             }
 
             $id = $_GET['id'];
-        } else {
+        } else { // Sinon redirection vers l'index
             \Http::redirect("index.php");
         }
 
@@ -108,8 +107,8 @@ class Comment extends Controller
     }
     public function report()
     {
-        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) {
-            die("Ho ! Fallait préciser le paramètre id en GET !");
+        if (empty($_GET['id']) || !ctype_digit($_GET['id'])) { // controle de l'id du commentaire dans l'url GET
+            die("Aucun commentaire n'a été trouvé !");
         }
 
         $id = $_GET['id'];
@@ -121,7 +120,6 @@ class Comment extends Controller
             die("Aucun commentaire n'a l'identifiant $id !");
         }
 
-
         $commentid = $commentaire["id"];
         // 3. Suppression du commentaire
         // On récupère l'identifiant de l'article avant de supprimer le commentaire
@@ -131,7 +129,6 @@ class Comment extends Controller
         $this->model->report($commentid);
 
         //5. Redirection vers l'article en question
-
 
         \Http::redirect("index.php?controller=article&task=show&id=" . $article_id);
     }

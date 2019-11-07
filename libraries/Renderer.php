@@ -1,5 +1,7 @@
 <?php
 
+// Fichier qui gere la fonction de mise en tampon des display
+
 class Renderer{
    public static function render(string $path, array $variables = [])
 {

@@ -27,7 +27,7 @@
           </li>
         </ul>
       <?php else : ?>
-        <a href="index.php?controller=user&task=getUser" class="admin">Administration</a>
+        <a href="index.php?controller=user&task=logIn" class="admin">Administration</a>
       <?php endif; ?>
     </div>
   </nav>

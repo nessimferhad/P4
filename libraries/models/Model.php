@@ -1,7 +1,8 @@
 <?php
 
 // CE FICHIER CONTENT TOUTES LES FONCTIONS UTILISEES PAR LES DIFFERENTS MODELS 
-
+// Protected pdo fait appel a la fonction pdo dans le fichier database pour permettre la connextion a la BDD
+// Protected table fait reference aux tables qui vont etre utilisées pour travailler avec
 
 namespace Models;
 
