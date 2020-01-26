@@ -130,6 +130,22 @@ class Article extends Controller
         \Renderer::render('articles/admin', compact('pageTitle', 'articles', 'commentaires'));
     }
 
+    public function addNewArticle()
+    {
+        if ($_SESSION['id']) {
+            $article_id = null;
+
+            if (!empty($_GET['id']) && ctype_digit($_GET['id'])) {
+                $article_id = $_GET['id'];
+            }
+        } else {
+            \Http::redirect("index.php");
+        }
+
+
+        \Renderer::render('articles/newarticle');
+    }
+
     public function insertNewArticle()
     {
 

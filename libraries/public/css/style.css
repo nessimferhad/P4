@@ -147,9 +147,10 @@ small {
     flex-direction: column;
     align-items: center;
 }
-.formarticle{
+form.formarticle{
     display: flex;
     flex-direction: column;
+    width: 50% !important;
 }
 .formarticle label{
     text-align: center;
@@ -231,4 +232,8 @@ textarea{
     body{
     background-repeat: round;
 }
+}
+.footer-copyright{
+    color: white;
+    text-decoration: none;
 }
