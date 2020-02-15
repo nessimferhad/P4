@@ -28,8 +28,8 @@
      <div id="postcomments">
          <form action="index.php?controller=comment&task=insert" method="POST">
              <h3>Vous voulez réagir ? N'hésitez pas à poster un commentaire !</h3>
-             <input type="text" id="authorcomment" name="author" placeholder="Votre pseudo !">
-             <textarea name="content" id="" rows="15" placeholder="Votre commentaire ..."></textarea>
+             <input type="text" id="authorcomment" name="author" placeholder="Votre pseudo !" required>
+             <textarea required name="content" id="" rows="15" placeholder="Votre commentaire ..."></textarea>
              <input type="hidden" name="article_id" value="<?= $article_id ?>">
              <button>Commenter !</button>
          </form>
