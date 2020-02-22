@@ -1,6 +1,6 @@
 <?php
 
-// Fichier qui va s'occuper de charger les controlleurs ainsi que les actions a effectuer 
+// Fichier qui va s'occuper de charger les controlleurs ainsi que les actions a effectuer ce fichier est le routeur 
 
 Class Application{
     public static function process()
