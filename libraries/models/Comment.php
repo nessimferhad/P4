@@ -19,6 +19,12 @@ class Comment extends Model
         return $commentaires;
     }
 
+    public function deleteAllWithArticle(int $article_id): void
+    {
+        $query = $this->pdo->prepare("DELETE FROM comments WHERE article_id = :article_id");
+        $query->execute(['article_id' => $article_id]);
+    }
+
     
     //insert un commentaire 
     public function insert(string $author, string $content, int $article_id, int $report): void

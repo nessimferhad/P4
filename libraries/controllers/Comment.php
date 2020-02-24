@@ -122,7 +122,7 @@ class Comment extends Controller
 
         $commentid = $commentaire["id"];
         // 3. Suppression du commentaire
-        // On récupère l'identifiant de l'article avant de supprimer le commentaire
+        // On récupère l'identifiant de l'article avant de signaler le commentaire
 
         $article_id = $commentaire['article_id'];
 

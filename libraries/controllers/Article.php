@@ -77,6 +77,7 @@ class Article extends Controller
 
     public function delete()
     {
+        $commentModel = new \Models\Comment();
         // fonctionnalité admin, on check donc si la session admin est présente ou non 
         if ($_SESSION['id']) {
 
@@ -104,6 +105,7 @@ class Article extends Controller
      3. Suppression de l'article
 */
         $this->model->delete($id);
+        $commentaires = $commentModel->deleteAllWithArticle($id);
         /*
      4. Redirection vers la page d'accueil de l'admin
 */
