@@ -13,18 +13,20 @@ class User extends Controller
 {
    protected $modelName = \Models\User::class;
 
-   function logIn(){
+   function logIn()
+   {
 
-    $user = $this->model->findUser("WHERE `id` = 1");
+      $user = $this->model->findUser("WHERE `id` = 1");
 
 
-    \Renderer::render('articles/connection', compact('user')); // compile et envoie la variable user dans la page connection
+      \Renderer::render('articles/connection', compact('user')); // compile et envoie la variable user dans la page connection
    }
 
-   function disconnect(){
+   function disconnect()
+   {
 
       session_destroy();
 
       \Http::redirect("index.php"); // redirection vers l'index
-    }
    }
+}

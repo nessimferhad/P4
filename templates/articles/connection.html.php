@@ -2,7 +2,7 @@
     <h1 class="display-20">Se connecter a l'administration</h1>
     <form class="form-inline my-2 my-lg-0" method="post">
         <label>
-            Entrez le mot de passe : 
+            Entrez le mot de passe :
             <input class="form-control mr-sm-2" type="password" name="adminaccess">
         </label>
         <button class="btn btn-primary btn-lg" type="submit"> Envoyer</button>

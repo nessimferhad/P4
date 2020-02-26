@@ -6,7 +6,8 @@ namespace Models;
 // Ce fichier contient la class user qui extend et recupere les propriétés de la class Model 
 // Protected table fait réference a la table de la bdd avec laquelle on travaille
 
-class User extends Model{
+class User extends Model
+{
 
     protected $table = 'users';
 
@@ -19,5 +20,4 @@ class User extends Model{
         $user = $resultats->fetch();
         return $user;
     }
-
 }

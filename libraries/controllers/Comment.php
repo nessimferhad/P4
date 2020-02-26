@@ -22,10 +22,10 @@ class Comment extends Controller
         //instencie le model Article depuis le namespace Models
         $articleModel = new \Models\Article();
 
-        
+
         //On vérifie que les données ont bien été envoyées en POST
         //Ensuite, on vérifie qu'elles ne sont pas nulles
-        
+
 
         $author = null;
         if (!empty($_POST['author'])) {

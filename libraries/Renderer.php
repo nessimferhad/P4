@@ -2,13 +2,14 @@
 
 // Fichier qui gere la fonction de mise en tampon des display
 
-class Renderer{
-   public static function render(string $path, array $variables = [])
+class Renderer
 {
-    extract($variables);
-    ob_start();
-    require('templates/' . $path . '.html.php');
-    $pageContent = ob_get_clean();
-    require('templates/layout.html.php');
-}
+    public static function render(string $path, array $variables = [])
+    {
+        extract($variables);
+        ob_start();
+        require('templates/' . $path . '.html.php');
+        $pageContent = ob_get_clean();
+        require('templates/layout.html.php');
+    }
 }

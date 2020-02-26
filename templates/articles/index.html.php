@@ -6,11 +6,11 @@
     <figure><img src="libraries\public\images\writer.jpg" alt="Jean Forteroche" id="me"></figure>
   </div>
   <div id="mydescription">
-    <p>je suis né le 20 octobre 1975 à Marseille, dans une petite cité marseillaise où j'ai passer la plus grande partie de son enfance. 
+    <p>je suis né le 20 octobre 1975 à Marseille, dans une petite cité marseillaise où j'ai passer la plus grande partie de son enfance.
       A l'âge de 27 ans j'ai décidé de me lancer dans l'aventure de l'écriture, mais depuis toutes ces années mon rêve etait le voyage...
       J'ai donc prit mon courage à deux mains et je me suis lancé direction l'Alaska pour commencer mon premier roman du longue série.
       Celui-ci ce nomme : <strong>Billet pour l'Alaska</strong></p>
-</div>
+  </div>
 </div>
 
 
@@ -20,7 +20,7 @@
 <?php foreach ($articles as $article) : ?>
   <div class='article <?= $article["id"] ?>' id="article">
     <h2><?= $article['title'] ?></h2>
-    <small>Ecrit le <?= $article['created_at'] ?></small>
+    <small>Ecrit le <?= date_format(date_create($article['created_at']), 'd-m-Y') ?></small>
     <p><?= $article['introduction'] ?></p>
     <a href="index.php?controller=article&task=show&id=<?= $article['id'] ?>">Lire la suite</a>
     <!--<a href="index.php?controller=article&task=delete&id=<?= $article['id'] ?>" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer</a>-->

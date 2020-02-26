@@ -41,9 +41,9 @@ abstract class Model
 
         return $reportedcomments;
     }
-    
 
-        // renvoie un contenu en particulier selon la table donnée
+
+    // renvoie un contenu en particulier selon la table donnée
     public function find(int $id)
     {
 
@@ -64,4 +64,3 @@ abstract class Model
         $query->execute(['id' => $id]);
     }
 }
-

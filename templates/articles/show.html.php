@@ -3,7 +3,7 @@
      <p><?= $article['introduction'] ?></p>
      <hr>
      <?= $article['content'] ?>
-     <small>Ecrit le <?= $article['created_at'] ?></small>
+     <small>Ecrit le <?= date_format(date_create($article['created_at']), 'd-m-Y'); ?></small>
  </div>
  <div id="comments">
      <?php if (count($commentaires) === 0) : ?>
@@ -13,15 +13,15 @@
          <?php foreach ($commentaires as $commentaire) : ?>
              <div id="commentscontent">
                  <h3>Commentaire de <?= $commentaire['author'] ?></h3>
-                 <small>Le <?= $commentaire['created_at'] ?></small>
+                 <small>Le <?= date_format(date_create($commentaire['created_at']), 'd-m-Y') ?></small>
                  <blockquote>
                      <em><?= $commentaire['content'] ?></em>
                  </blockquote>
                  <?php if (isset($_SESSION['id'])) : ?>
-                 <span id="reported">nombre de signalements : <?= $commentaire['report'] ?> <span>
-                 <a class="deletecomment" href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?!`)">Supprimer</a>
-                 <?php endif?>
-                 <a href="index.php?controller=comment&task=report&id=<?= $commentaire['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir signaler ce commentaire ?!`)">Signaler</a>
+                     <span id="reported">nombre de signalements : <?= $commentaire['report'] ?> <span>
+                             <a class="deletecomment" href="index.php?controller=comment&task=delete&id=<?= $commentaire['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?!`)">Supprimer</a>
+                         <?php endif ?>
+                         <a href="index.php?controller=comment&task=report&id=<?= $commentaire['id'] ?>" onclick="return window.confirm(`Êtes vous sûr de vouloir signaler ce commentaire ?!`)">Signaler</a>
              </div>
          <?php endforeach ?>
      <?php endif ?>
@@ -35,4 +35,3 @@
          </form>
      </div>
  </div>
-
